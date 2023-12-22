@@ -1,12 +1,13 @@
 import express from "express";
 import { Request, Response } from "express";
+import userRouter from "./modules/users/routers/user.router";
 
 const app = express();
 app.use(express.json());
 
-app.use("/");
+app.use("/", userRouter);
 
-app.use("/", (req: Request, res: Response) => {
+app.get("/", (req: Request, res: Response) => {
   res.status(200).json({ message: "sucesso!" });
 });
 
